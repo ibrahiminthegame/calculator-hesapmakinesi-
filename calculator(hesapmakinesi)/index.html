@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+</head>
+<body>
+    
+    <div class="calculator">
+        <input class="bosluk" type="text" id="display">
+        <div class="button-row">
+          <button class="silme" onclick="clearDisplay()">C</button>
+          <button class="silme" onclick="backspace()">CE</button>
+          <button class="islem" onclick="addToDisplay('/')">÷</button>
+          <button class="islem" onclick="addToDisplay('*')">x</button>
+        </div>
+        <div class="button-row">
+          <button class="rakam" onclick="addToDisplay(7)">7</button>
+          <button class="rakam" onclick="addToDisplay(8)">8</button>
+          <button class="rakam" onclick="addToDisplay(9)">9</button>
+          <button class="islem" onclick="addToDisplay('-')">-</button>
+        </div>
+        <div class="button-row">
+          <button class="rakam" onclick="addToDisplay(4)">4</button>
+          <button class="rakam" onclick="addToDisplay(5)">5</button>
+          <button class="rakam" onclick="addToDisplay(6)">6</button>
+          <button class="islem" onclick="addToDisplay('+')">+</button>
+        </div>
+        <div class="button-row">
+          <button class="rakam" onclick="addToDisplay(1)">1</button>
+          <button class="rakam" onclick="addToDisplay(2)">2</button>
+          <button class="rakam" onclick="addToDisplay(3)">3</button>
+          <button class="esittir" onclick="calculate()" class="equal-sign">=</button>
+        </div>
+        <div class="button-row">
+          <button class="sifir" onclick="addToDisplay(0)">0</button>
+          <button class="nokta" onclick="addToDisplay('.')">.</button>
+        </div>
+    </div>
+    <div class="baslik">
+      <p class="font-effect-fire">HAYALETLİ HESAP MAKİNESİ</p>
+    </div>
+      <script>
+        const calculator = document.querySelector('.calculator');
+        const display = document.querySelector('#display');
+        let displayValue = '0';
+
+        function addToDisplay(value) {
+        if (displayValue === '0') {
+            displayValue = value;
+        } else {
+            displayValue += value;
+        }
+        display.value = displayValue;
+        }
+
+        function clearDisplay() {
+        displayValue = '0';
+        display.value = displayValue;
+        }
+
+        function backspace() {
+        displayValue = displayValue.slice(0, -1);
+        if (displayValue === '') {
+            displayValue = '0';
+        }
+        display.value = displayValue;
+        }
+
+        function calculate() {
+        displayValue = eval(displayValue);
+        display.value = displayValue;
+        }
+
+        
+      </script>
+      
+</body>
+</html>
